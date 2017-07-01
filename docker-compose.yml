@@ -1,0 +1,29 @@
+
+# docker-compose up
+
+version: '3.3'
+
+services:
+  ckan_app:
+    container_name: ckan_app
+    image: ckan_dev:latest
+    depends_on:
+      - solr
+      - db
+    ports:
+      - "8000:8000"
+  solr:
+    container_name: ckan_solr
+    image: ckan_solr:latest
+    ports:
+      - "8983:8983"
+  db:
+    container_name: ckan_db
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: ckan_default
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: ckan_default
+      LANG: de_DE.utf8
+    ports:
+      - "5432:5432"
