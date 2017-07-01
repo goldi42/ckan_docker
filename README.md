@@ -6,7 +6,7 @@ Docker images for Ckan 2.5.5
 Build the Solr Image
 
 ```
-docker build -t ckan_solr -f Docker.solr .
+docker build -t ckan_solr -f Dockerfile.solr .
 ```
 
 Then Build the ckan app container
