@@ -12,6 +12,8 @@ services:
       - db
     ports:
       - "8000:8000"
+    volumes:
+      - ckan_uploads:/app/uploads
   solr:
     container_name: ckan_solr
     image: ckan_solr:latest
@@ -27,3 +29,8 @@ services:
       LANG: de_DE.utf8
     ports:
       - "5432:5432"
+    volumes:
+      - ckan_data:/var/lib/postgresql/data
+volumes:
+  ckan_uploads:
+  ckan_data:
