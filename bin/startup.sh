@@ -2,6 +2,8 @@
 
 set -eu -o pipefail
 
+config_file=${1}.ini
+
 echo "Waiting for other services to start ckan"
 
 echo "Waiting for solr"
@@ -19,7 +21,7 @@ done
 echo "All servies are up starting ckan..."
 
 echo "Initialise Database"
-paster --plugin=ckan db init -c config/development.ini
+paster --plugin=ckan db init -c config/${config_file}
 
 echo "Start ckan"
-gunicorn --paste config/development.ini -b 0.0.0.0:8000
+gunicorn --paste config/${config_file} -b 0.0.0.0:8000
