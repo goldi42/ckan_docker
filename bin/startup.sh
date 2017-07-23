@@ -24,4 +24,4 @@ echo "Initialise Database"
 paster --plugin=ckan db init -c config/${config_file}
 
 echo "Start ckan"
-gunicorn --paste config/${config_file}
+gunicorn --paste config/${config_file} --reload
